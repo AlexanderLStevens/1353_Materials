@@ -30,6 +30,7 @@ class ExpressionTree(BinaryTree):
         left_value = self.evaluate(node.left_child)
         right_value = self.evaluate(node.right_child)
         
+        
         if node.value == '+':
             return left_value + right_value
         elif node.value == '-':

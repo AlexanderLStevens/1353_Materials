@@ -49,6 +49,36 @@ class BinaryTree:
         self.size+=1
         return return_value
     
+    def add(self,value):
+        if self.root is None:
+            self.add_root(value)
+            return
+        curr=self.root
+
+        while True:
+            if curr.value> value: # moving through left subtree
+                if not curr.left_child:
+                    self.add_left(curr,value)
+                    return
+                else: 
+                    curr=curr.left_child
+            else: #moving through right subtree
+                if not curr.right_child:
+                    self.add_right(curr,value)
+                    return
+                else: 
+                    curr=curr.right_child
+
+
+
+
+
+            
+
+         #
+
+
+
     def add_left(self,parent:TreeNode,value)->TreeNode:
         if parent.left_child is not None:
             raise ValueError("left child already exists")
@@ -56,6 +86,7 @@ class BinaryTree:
         parent.left_child=return_value
         self.size+=1
         return return_value
+    
     def add_right(self,parent:TreeNode,value):
         if parent.right_child is not None:
             raise ValueError("right child already exists")
@@ -84,18 +115,29 @@ class BinaryTree:
         
 def _main():
     tree = BinaryTree()
-    A=tree.add_root("A")
-    B=tree.add_left(A,"B")
-    C=tree.add_right(A,"C")
-    D=tree.add_left(B,"D")
-    E=tree.add_right(B,"E")
-    F=tree.add_left(C,"F")
-    H=tree.add_left(D,"H")
-    I=tree.add_right(D,"I")
-    J=tree.add_left(E,"J")
-    K=tree.add_right(E,"K")
+    n=10
+    tree.add(5)
+    tree.add(3)
+    tree.add(2)
+    tree.add(1)
+    tree.add(4)
+    tree.add(7)
+    tree.add(6)
+    tree.add(9)
+    tree.add(8)
+    
+        # A=tree.add_root("A")
+    # B=tree.add_left(A,"B")
+    # C=tree.add_right(A,"C")
+    # D=tree.add_left(B,"D")
+    # E=tree.add_right(B,"E")
+    # F=tree.add_left(C,"F")
+    # H=tree.add_left(D,"H")
+    # I=tree.add_right(D,"I")
+    # J=tree.add_left(E,"J")
+    # K=tree.add_right(E,"K")
     print(tree._str_helper(tree.root,0))
-    print(A.node_depth())
+    # print(A.node_depth())
 
 
 if __name__ == '__main__':
